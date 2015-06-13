@@ -11,6 +11,14 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def update
+    if profile.update_attributes profile_params
+      redirect_to profile_url(profile)
+    else
+      redirect_to edit_profile_url(profile)
+    end
+  end
+
   private
 
   def profile_params
@@ -22,11 +30,11 @@ class ProfilesController < ApplicationController
   end
 
   def load_profile
-    found || blank || created
+    blank || found || created
   end
 
   def found
-    params[:action] == 'show' && Profile.find(params[:id])
+    %w(show edit update).include?(params[:action]) && Profile.find(params[:id])
   end
 
   def blank
