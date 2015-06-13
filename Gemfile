@@ -29,6 +29,8 @@ gem 'react-rails', '~> 1.0.0'
 
 gem 'dotenv', '~> 2.0.1'
 
+gem 'haml', '~> 4.0.6'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -39,7 +41,9 @@ gem 'dotenv', '~> 2.0.1'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'rspec', '~> 3.2.0'
+  gem 'clint_eastwood', '~> 0.0.3'
+
+  gem 'rspec-rails', '~> 3.2.3'
   gem 'pry-rails', '~> 0.3.4'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

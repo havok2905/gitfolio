@@ -1,15 +1,18 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
-Devise.setup do |config|
 
-  config.omniauth :github, ENV['GITHUB_PUBLIC_KEY'], ENV['GITHUB_PRIVATE_KEY']
+Devise.setup do |config|
+  Dotenv.load
+
+  config.omniauth :github, ENV['GITHUB_PUBLIC_KEY'], ENV['GITHUB_SECRET_KEY']
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'e9a82b417b08fdd086ad015ad566c1e47c19377a4d3c46d551af774a858660d7cf623a7c6611efffc87a793ea705fec67c786f467441eee68382d026d0f6c950'
+  # config.secret_key = 'e9a82b417b08fdd086ad015ad566c1e47c19377a4d3c46d551af774a858660d7cf623a7c6611efffc87
+  # a793ea705fec67c786f467441eee68382d026d0f6c950'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -102,7 +105,8 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '4e99a8057468705b6e95d2604f5ba4c4587ba76248782ffd1ea1a043cbb09565a13d2597fb7828da071633f2a23f428ab633559d9a41ee9aaf8b77ecee81df24'
+  # config.pepper = '4e99a8057468705b6e95d2604f5ba4c4587ba76248782ffd1ea1a043cbb09565a13d2597fb7828da071633f2a23f42
+  # 8ab633559d9a41ee9aaf8b77ecee81df24'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
