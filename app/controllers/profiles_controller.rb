@@ -3,6 +3,8 @@ class ProfilesController < ApplicationController
 
   helper_method :profile
 
+  before_action :authenticate_user!, except: [:show]
+
   def create
     if profile.save
       redirect_to profile_url(profile)
