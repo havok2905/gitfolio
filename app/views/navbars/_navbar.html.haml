@@ -1,0 +1,10 @@
+%header
+  %nav
+    %ul
+      - if policy(:profile).new?
+        %li= link_to 'Profiles', profiles_url
+    %ul
+      - if current_user
+        %li= current_user.email
+        %li= current_user.role
+        %li= link_to 'Logout', destroy_user_session_path, method: :delete
