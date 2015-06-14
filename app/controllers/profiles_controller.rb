@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
 
   def create
     if profile.save
+      assign_developer_profile
       redirect_to profile_url(profile)
     else
       redirect_to new_profile_url
@@ -23,6 +24,13 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+  def assign_developer_profile
+    if current_user.developer?
+      current_user.profile = profile
+      current_user.save
+    end
+  end
 
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :email, :tagline, :position)
