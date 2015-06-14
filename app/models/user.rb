@@ -13,6 +13,7 @@
 # string   :provider
 # string   :uid
 # integer  :role
+# integer  :profile_id
 #
 class User < ActiveRecord::Base
 
@@ -30,6 +31,8 @@ class User < ActiveRecord::Base
 
 
   enum role: [:admin, :developer]
+
+  belongs_to :profile
 
   # Define getters on a class level for role values
   roles.each do |key, value|
