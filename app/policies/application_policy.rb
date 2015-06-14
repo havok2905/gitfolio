@@ -6,4 +6,15 @@ class ApplicationPolicy
     @user = user
     @record = record
   end
+
+  private
+
+  def developer?
+    @user.developer?
+  end
+
+  def admin?
+    @user.admin?
+  end
+
 end
