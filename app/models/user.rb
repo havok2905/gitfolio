@@ -12,7 +12,7 @@
 # string   :last_sign_in_ip
 # string   :provider
 # string   :uid
-# string   :role
+# integer  :role
 #
 class User < ActiveRecord::Base
 

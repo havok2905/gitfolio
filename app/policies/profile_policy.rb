@@ -1,5 +1,9 @@
 # Profiles Controller Permissions
 class ProfilePolicy < ApplicationPolicy
+  def index?
+    admin?
+  end
+
   def show?
     true
   end

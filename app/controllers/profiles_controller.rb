@@ -1,9 +1,10 @@
 # Controller for User tailored profile pages for the public
 class ProfilesController < ApplicationController
 
-  helper_method :profile
+  helper_method :profile, :profiles
 
   before_action :authenticate_user!, except: [:show]
+  before_action { authorize :profile }
 
   def create
     if profile.save
@@ -29,6 +30,10 @@ class ProfilesController < ApplicationController
 
   def profile
     @profile ||= load_profile
+  end
+
+  def profiles
+    Profile.order(:id)
   end
 
   def load_profile

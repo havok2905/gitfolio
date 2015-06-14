@@ -1,0 +1,18 @@
+%h1 Profiles
+
+%table
+  %tr
+    %th First Name
+    %th Last Name
+    %th Tagline
+    %th Position
+    %th Email
+    %th
+  - profiles.each do |p|
+    %tr
+      %td= p.first_name
+      %td= p.last_name
+      %td= p.tagline
+      %td= p.position
+      %td= p.email
+      %td= link_to 'edit', edit_profile_url(p)
