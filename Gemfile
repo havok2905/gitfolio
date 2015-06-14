@@ -41,6 +41,9 @@ gem 'haml', '~> 4.0.6'
 # Permissions
 gem 'pundit', '~> 1.0.1'
 
+# Party hard with HTTParty :D
+gem 'httparty', '~> 0.13.5'
+
 group :development, :test do
   gem 'clint_eastwood', '~> 0.0.3'
 
