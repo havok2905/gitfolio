@@ -10,14 +10,10 @@ class ApplicationPolicy
   private
 
   def developer?
-    if @user
-      @user.developer?
-    end
+    @user.developer? if @user
   end
 
   def admin?
-    if @user
-      @user.admin?
-    end
+    @user.admin? if @user
   end
 end

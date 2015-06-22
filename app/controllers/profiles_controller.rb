@@ -26,10 +26,10 @@ class ProfilesController < ApplicationController
   private
 
   def assign_developer_profile
-    if current_user.developer?
-      current_user.profile = profile
-      current_user.save
-    end
+    return unless current_user.developer?
+
+    current_user.profile = profile
+    current_user.save
   end
 
   def profile_params

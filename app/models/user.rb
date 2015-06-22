@@ -17,18 +17,11 @@
 #
 class User < ActiveRecord::Base
 
-  class << self
-    def role_names
-      roles.map{ |key, value | key }
-    end
-  end
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:github]
-
 
   enum role: [:admin, :developer]
 
@@ -39,14 +32,37 @@ class User < ActiveRecord::Base
     define_singleton_method(key) { value }
   end
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0, 20]
-      user.role = self.developer
+  class << self
+    def role_names
+      roles.map { |key, _value| key }
+    end
+
+    def from_omniauth(auth)
+      where(provider: provider(auth), uid: uid(auth)).first_or_create do |user|
+        user.provider = provider(auth)
+        user.uid = uid(auth)
+        user.email = email(auth)
+        user.password = devise_token
+        user.role = developer
+      end
+    end
+
+    private
+
+    def provider(auth)
+      auth.provider
+    end
+
+    def uid(auth)
+      auth.uid
+    end
+
+    def email(auth)
+      auth.info.email
+    end
+
+    def devise_token
+      Devise.friendly_token[0, 20]
     end
   end
-
 end
