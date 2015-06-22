@@ -9,11 +9,11 @@ class ProfilePolicy < ApplicationPolicy
   end
 
   def new?
-    (developer? && has_no_profile?) || admin?
+    (developer? && no_profile?) || admin?
   end
 
   def create?
-    (developer? && has_no_profile?) || admin?
+    (developer? && no_profile?) || admin?
   end
 
   def edit?
@@ -27,6 +27,6 @@ class ProfilePolicy < ApplicationPolicy
   private
 
   def no_profile?
-    @user.profile.nil?
+    @user.profile_id.nil?
   end
 end
