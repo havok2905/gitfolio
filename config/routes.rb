@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :profiles, controller: 'profiles', only: [:index, :show, :new, :create, :update, :edit]
   devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
 
+  root 'index#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
