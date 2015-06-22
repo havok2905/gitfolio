@@ -1,5 +1,5 @@
 # Github API Wrapper Class
-class GithubAPI
+class GithubApi
   def initialize
     @root = 'https://api.github.com'
   end
