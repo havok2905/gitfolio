@@ -12,6 +12,7 @@
 # string   :last_sign_in_ip
 # string   :provider
 # string   :uid
+# string   :nickname
 # integer  :role
 # integer  :profile_id
 #
@@ -44,10 +45,15 @@ class User < ActiveRecord::Base
         user.email = email(auth)
         user.password = devise_token
         user.role = developer
+        user.nickname = nickname(auth)
       end
     end
 
     private
+
+    def nickname(auth)
+      auth.info.nickname
+    end
 
     def provider(auth)
       auth.provider
