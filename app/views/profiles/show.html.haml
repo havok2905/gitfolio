@@ -1,4 +1,20 @@
 %h1= "#{profile.full_name}'s Profile"
 %h2= profile.tagline
-%p= "Position: #{profile.position}"
-%p= profile.email
+
+%dl
+  %dt Account
+  %dd= profile.user.nickname
+  %dt Current Position:
+  %dd= profile.position
+  %dt Email:
+  %dd= profile.email
+
+%ul
+  - @repos.each do |repo|
+    %li
+      %a{href: repo[:url]}= repo[:name]
+    %li= repo[:description]
+    %li
+      %ul
+        - repo[:languages].each do |language|
+          %li= language

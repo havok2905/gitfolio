@@ -6,6 +6,11 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action { authorize :profile }
 
+  def show
+    api = GithubApi.new
+    @repos = api.repo_data username: profile.user.nickname
+  end
+
   def create
     if profile.save
       assign_developer_profile
