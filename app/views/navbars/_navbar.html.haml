@@ -4,6 +4,8 @@
       %li= link_to 'Home', root_url
       - if policy(:profile).index?
         %li= link_to 'Profiles', profiles_url
+      - if policy(:user).index?
+        %li= link_to 'Users', users_url
     %ul
       - if current_user
         %li= current_user.email

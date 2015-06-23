@@ -1,0 +1,22 @@
+%h1 Users
+%table
+  %tr
+    %th Nickname
+    %th Email
+    %th UID
+    %th Provider
+    %th Role
+    %th Profile
+    %th
+  - users.each do |user|
+    %tr
+      %td= user.nickname || "_"
+      %td= user.email || "_"
+      %td= user.uid || "_"
+      %td= user.provider || "_"
+      %td= user.role || "_"
+      - if user.profile
+        %td= link_to 'profile', profile_url(user.profile_id)
+      - else
+        %td _
+      %td= link_to 'edit'

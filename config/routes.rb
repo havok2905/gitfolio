@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+
   resources :profiles, controller: 'profiles', only: [:index, :show, :new, :create, :update, :edit]
+
+  resources :users, controller: 'user_admin', only: [:index]
+
   devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
 
   root 'index#index'
