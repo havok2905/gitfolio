@@ -35,3 +35,10 @@ profile = Profile.create({
   position: 'Avenger',
   email: 'bruce@example.com'
 })
+
+repo = Repo.create({
+  url: 'https://github.com/havok2905/gitfolio',
+  description: '',
+  name: 'gitfolio',
+  user_id: user.id
+})

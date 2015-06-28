@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   enum role: [:admin, :developer]
 
   belongs_to :profile
+  has_many :repos
 
   # Define getters on a class level for role values
   roles.each do |key, value|
