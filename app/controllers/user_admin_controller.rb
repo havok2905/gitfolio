@@ -1,20 +1,9 @@
 class UserAdminController < ApplicationController
 
-  helper_method :users
+  helper_method :users, :user
 
   before_action :authenticate_user!
   before_action { authorize :user }
-
-  def index
-  end
-
-  def create
-    if user.save
-      redirect_to user_url(user)
-    else
-      redirect_to new_user_url
-    end
-  end
 
   def update
     if user.update_attributes user_params

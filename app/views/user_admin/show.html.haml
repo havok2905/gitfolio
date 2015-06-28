@@ -1,1 +1,13 @@
 %h1 Show User
+%h2= user.id
+
+%ul
+  %li= "Nickname: #{ user.nickname || "_" }"
+  %il= "Email: #{ user.email || "_" }"
+  %li= "UID: #{ user.uid || "_" }"
+  %li= "Profiver: #{ user.provider || "_" }"
+  %li= "Role: #{user.role || "_" }"
+  - if user.profile
+    %li= link_to 'profile', profile_url(user)
+  - else
+    %li No Profile
