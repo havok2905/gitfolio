@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628230238) do
+ActiveRecord::Schema.define(version: 20150628232107) do
 
   create_table "profiles", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "tagline"
-    t.string "position"
-    t.string "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "tagline"
+    t.string   "position"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "repos", force: :cascade do |t|
@@ -28,7 +30,11 @@ ActiveRecord::Schema.define(version: 20150628230238) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "whitelist_id"
   end
+
+  add_index "repos", ["user_id"], name: "index_repos_on_user_id"
+  add_index "repos", ["whitelist_id"], name: "index_repos_on_whitelist_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -53,5 +59,13 @@ ActiveRecord::Schema.define(version: 20150628230238) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["profile_id"], name: "index_users_on_profile_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "whitelists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "whitelists", ["user_id"], name: "index_whitelists_on_user_id"
 
 end

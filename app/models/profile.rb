@@ -5,6 +5,8 @@
 # string :tagline
 # string :position
 # string :email
+# datetime :created_at
+# datetime :updated_at
 #
 class Profile < ActiveRecord::Base
   has_one :user

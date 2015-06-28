@@ -6,6 +6,7 @@ class CreateProfileModel < ActiveRecord::Migration
       t.string :tagline
       t.string :position
       t.string :email
+      t.timestamps
     end
   end
 end
