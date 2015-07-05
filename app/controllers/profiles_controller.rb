@@ -43,15 +43,20 @@ class ProfilesController < ApplicationController
 
   def assign_developer_repos
     return unless current_user.developer?
-    repos = api.repo_data username: profile.user.nickname
+    repos = api.repo_data username: profile.nickname
     repos.each do |repo|
-      profile.user.repos.push Repo.create({
-        url: repo[:name],
-        description: repo[:description],
-        name: repo[:name],
-        user: profile.user
-      })
+      assign_developer_repo repo
     end
+  end
+
+  def assign_developer_repo(repo)
+    return unless current_user.developer?
+    profile.repos.push Repo.create(
+      url: repo[:name],
+      description: repo[:description],
+      name: repo[:name],
+      user: profile.user
+    )
   end
 
   def profile_params

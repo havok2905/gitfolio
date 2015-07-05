@@ -39,6 +39,12 @@ class User < ActiveRecord::Base
       roles.map { |key, _value| key }
     end
 
+    # rubocop:disable Metrics/AbcSize
+    # This seems to be the standard solution for this kind of creation
+    # from omniauth. Rather than fight the community over a single complexity
+    # point, I'm letting the linter ignore this.
+    #
+    # Assignment Branch Condition size for from_omniauth is too high. [16/15]
     def from_omniauth(auth)
       where(provider: provider(auth), uid: uid(auth)).first_or_create do |user|
         user.provider = provider(auth)
@@ -49,6 +55,7 @@ class User < ActiveRecord::Base
         user.nickname = nickname(auth)
       end
     end
+    # rubocop:enable Metrics/AbcSize
 
     private
 

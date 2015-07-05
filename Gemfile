@@ -43,7 +43,7 @@ gem 'httparty', '~> 0.13.5'
 
 group :development, :test do
   # Linting and static analysis
-  gem 'clint_eastwood', '~> 0.0.3'
+  gem 'clint_eastwood'
 
   # Unit Testing
   gem 'rspec-rails', '~> 3.2.3'

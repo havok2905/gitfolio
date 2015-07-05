@@ -4,7 +4,7 @@ RSpec.describe Whitelist do
   subject { Whitelist }
 
   before :each do
-    @Whitelist = Whitelist.new
+    @whitelist = Whitelist.new
   end
 
   context 'instance methods' do

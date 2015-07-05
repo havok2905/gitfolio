@@ -6,7 +6,6 @@
 # integer :user_id
 # datetime :created_at
 # datetime :updated_at
-
 class Repo < ActiveRecord::Base
   belongs_to :user
 end

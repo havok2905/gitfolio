@@ -1,3 +1,4 @@
+# Controller for User crud opperations
 class UserAdminController < ApplicationController
 
   helper_method :users, :user

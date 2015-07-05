@@ -14,4 +14,12 @@ class Profile < ActiveRecord::Base
   def full_name
     first_name + ' ' + last_name
   end
+
+  def nickname
+    delegate :nickname, to: :user
+  end
+
+  def repos
+    delegate :repos, to: :user
+  end
 end

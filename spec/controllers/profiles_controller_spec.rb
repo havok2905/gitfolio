@@ -10,7 +10,7 @@ RSpec.describe ProfilesController do
       last_name: 'Updated',
       tagline: 'Updated',
       position: 'Updated',
-      email: 'updated@updated.updated',
+      email: 'updated@updated.updated'
     }
   end
 
@@ -20,7 +20,7 @@ RSpec.describe ProfilesController do
       last_name: 'Created',
       tagline: 'Created',
       position: 'Created',
-      email: 'created@created.created',
+      email: 'created@created.created'
     }
   end
 
@@ -30,7 +30,7 @@ RSpec.describe ProfilesController do
 
   context '#show' do
     it 'should return a valid list of repositories' do
-      @user = create(:developer, { email: 'foo@foo.foo' })
+      @user = create(:developer, email: 'foo@foo.foo')
       get :show, id: @user.profile.id
       expect(assigns(:repos)).to be_truthy
     end

@@ -32,6 +32,6 @@ class GithubApi
   private
 
   def params
-    { query: {access_token: ENV['GITHUB_ACCESS_TOKEN']} }
+    { query: { access_token: ENV['GITHUB_ACCESS_TOKEN'] } }
   end
 end
