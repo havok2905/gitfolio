@@ -52,7 +52,7 @@ class ProfilesController < ApplicationController
   def assign_developer_repo(repo)
     return unless current_user.developer?
     profile.repos.push Repo.create(
-      url: repo[:name],
+      url: repo[:url],
       description: repo[:description],
       name: repo[:name],
       user: profile.user
