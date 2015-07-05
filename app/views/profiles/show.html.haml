@@ -12,9 +12,5 @@
 %ul
   - @repos.each do |repo|
     %li
-      %a{href: repo[:url]}= repo[:name]
-    %li= repo[:description]
-    %li
-      %ul
-        - repo[:languages].each do |language|
-          %li= language
+      %a{href: repo.url}= repo.name
+    %li= repo.description

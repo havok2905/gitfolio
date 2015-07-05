@@ -7,13 +7,13 @@ class ProfilesController < ApplicationController
   before_action { authorize :profile }
 
   def show
-    api = GithubApi.new
-    @repos = api.repo_data username: profile.user.nickname
+    @repos = profile.user.repos.all
   end
 
   def create
     if profile.save
       assign_developer_profile
+      assign_developer_repos
       redirect_to profile_url(profile)
     else
       redirect_to new_profile_url
@@ -30,11 +30,28 @@ class ProfilesController < ApplicationController
 
   private
 
+  def api
+    @api ||= GithubApi.new
+  end
+
   def assign_developer_profile
     return unless current_user.developer?
 
     current_user.profile = profile
     current_user.save
+  end
+
+  def assign_developer_repos
+    return unless current_user.developer?
+    repos = api.repo_data username: profile.user.nickname
+    repos.each do |repo|
+      profile.user.repos.push Repo.create({
+        url: repo[:name],
+        description: repo[:description],
+        name: repo[:name],
+        user: profile.user
+      })
+    end
   end
 
   def profile_params
