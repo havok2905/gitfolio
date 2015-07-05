@@ -10,16 +10,10 @@
 #
 class Profile < ActiveRecord::Base
   has_one :user
+  delegate :nickname, to: :user
+  delegate :repos, to: :user
 
   def full_name
     first_name + ' ' + last_name
-  end
-
-  def nickname
-    delegate :nickname, to: :user
-  end
-
-  def repos
-    delegate :repos, to: :user
   end
 end
