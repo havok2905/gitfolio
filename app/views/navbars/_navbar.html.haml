@@ -9,6 +9,8 @@
       - if current_user
         - if current_user.needs_profile?
           %li= link_to 'Make Profile', new_profile_url
+        - if current_user.profile?
+          %li= link_to 'Edit My Profile', edit_profile_url(current_user.profile)
     %ul
       - if current_user
         %li= current_user.email

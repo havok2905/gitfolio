@@ -83,4 +83,8 @@ class User < ActiveRecord::Base
   def needs_profile?
     profile.nil? && role == 'developer'
   end
+
+  def profile?
+    profile.present? && role == 'developer'
+  end
 end

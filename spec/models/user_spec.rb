@@ -34,6 +34,33 @@ RSpec.describe User do
         end
       end
     end
+
+    context '#profile?' do
+      context 'developer user' do
+        before :each do
+          @user = create(:developer)
+        end
+
+        it 'should be true for developers with profiles' do
+          expect(@user.profile?).to be(true)
+        end
+
+        it 'should be false for developers with no profiles' do
+          @user.profile = nil
+          expect(@user.profile?).to be(false)
+        end
+      end
+
+      context 'admin user' do
+        before :each do
+          @user = create(:admin)
+        end
+
+        it 'should be false for admins' do
+          expect(@user.profile?).to be(false)
+        end
+      end
+    end
   end
 
   context 'class methods' do
