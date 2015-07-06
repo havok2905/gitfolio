@@ -79,4 +79,8 @@ class User < ActiveRecord::Base
       Devise.friendly_token[0, 20]
     end
   end
+
+  def needs_profile?
+    profile.nil? && role == 'developer'
+  end
 end

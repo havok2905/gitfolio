@@ -6,6 +6,9 @@
         %li= link_to 'Profiles', profiles_url
       - if policy(:user).index?
         %li= link_to 'Users', users_url
+      - if current_user
+        - if current_user.needs_profile?
+          %li= link_to 'Make Profile', new_profile_url
     %ul
       - if current_user
         %li= current_user.email
