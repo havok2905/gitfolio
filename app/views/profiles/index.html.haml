@@ -8,6 +8,7 @@
     %th Position
     %th Email
     %th
+    %th
   - profiles.each do |p|
     %tr
       %td= p.first_name
@@ -16,3 +17,4 @@
       %td= p.position
       %td= p.email
       %td= link_to 'edit', edit_profile_url(p)
+      %td= link_to 'view', profile_url(p)
