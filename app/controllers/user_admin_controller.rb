@@ -15,7 +15,6 @@ class UserAdminController < ApplicationController
   end
 
   def sync_repos
-    binding.pry
     user.sync_repos
     redirect_to user_url(user)
   end

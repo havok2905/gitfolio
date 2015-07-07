@@ -83,8 +83,14 @@ class User < ActiveRecord::Base
   end
 
   def sync_repos
+    binding.pry
     repo_list = api.repo_data(username: nickname).map do |r|
-      Repo.first_or_create( url: r[:url], description: r[:description], name: r[:name], user_id: id)
+      Repo.where(user_id: id, name: r[:name]).first_or_create({
+        url: r[:url],
+        description: r[:description],
+        name: r[:name],
+        user_id: id
+      })
     end
     update_attributes repos: repo_list
   end

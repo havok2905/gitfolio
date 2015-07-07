@@ -1,6 +1,6 @@
 %header
-  %nav
-    %ul
+  %nav.navbar
+    %ul.left
       %li= link_to 'Home', root_url
       - if policy(:profile).index?
         %li= link_to 'Profiles', profiles_url
@@ -10,14 +10,14 @@
         - if current_user.needs_profile?
           %li= link_to 'Make Profile', new_profile_url
         - if current_user.profile?
-          %li= link_to 'View My Profile', profile_url(current_user.profile)
-          %li= link_to 'Edit My Profile', edit_profile_url(current_user.profile)
+          %li= link_to 'View Profile', profile_url(current_user.profile)
+          %li= link_to 'Edit Profile', edit_profile_url(current_user.profile)
         - if current_user.developer?
           %li= link_to 'Sync Repos', user_sync_repos_url(current_user), method: :patch
-    %ul
+    %ul.right
       - if current_user
         %li= current_user.email
-        %li= current_user.role
         %li= link_to 'Logout', destroy_user_session_path, method: :delete
       - else
         %li= link_to 'Login', new_user_session_path, method: :get
+    .clearfix

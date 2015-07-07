@@ -1,0 +1,20 @@
+.profile {
+  h1 {
+    margin: 50px 0 20px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  dl {
+    margin-top: 20px;
+    text-align: center;
+    dd { padding: 5px; }
+    dt { font-weight: 900; }
+    dd, dt { display: inline; }
+  }
+}

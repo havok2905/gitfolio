@@ -1,0 +1,28 @@
+@import "colors";
+
+nav.navbar {
+  background-color: $black;
+  font-size: 12px;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+
+  ul {
+    display: inline-block;
+
+    &.left  { float: left;  }
+    &.right { float: right; }
+
+    li {
+      list-style-type: none;
+      color: $white;
+      display: inline;
+      margin: 0 5px;
+    }
+
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}

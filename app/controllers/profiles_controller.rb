@@ -66,7 +66,7 @@ class ProfilesController < ApplicationController
   end
 
   def user_repos
-    profile.user_repos.all
+    current_user.repos.all
   end
 
   def selected_repos
