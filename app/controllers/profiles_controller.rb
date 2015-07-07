@@ -1,19 +1,14 @@
 # Controller for User tailored profile pages for the public
 class ProfilesController < ApplicationController
 
-  helper_method :profile, :profiles
+  helper_method :profile, :profiles, :user_repos
 
   before_action :authenticate_user!, except: [:show]
   before_action { authorize :profile }
 
-  def show
-    @repos = profile.user.repos.all
-  end
-
   def create
     if profile.save
       assign_developer_profile
-      assign_developer_repos
       redirect_to profile_url(profile)
     else
       redirect_to new_profile_url
@@ -30,37 +25,20 @@ class ProfilesController < ApplicationController
 
   private
 
-  def api
-    @api ||= GithubApi.new
-  end
-
   def assign_developer_profile
     return unless current_user.developer?
-
-    current_user.profile = profile
-    current_user.save
-  end
-
-  def assign_developer_repos
-    return unless current_user.developer?
-    repos = api.repo_data username: profile.nickname
-    repos.each do |repo|
-      assign_developer_repo repo
-    end
-  end
-
-  def assign_developer_repo(repo)
-    return unless current_user.developer?
-    profile.repos.push Repo.create(
-      url: repo[:url],
-      description: repo[:description],
-      name: repo[:name],
-      user: profile.user
-    )
+    current_user.update_attributes profile: profile
   end
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :email, :tagline, :position)
+    params.require(:profile).permit([
+      :first_name,
+      :last_name,
+      :email,
+      :tagline,
+      :position,
+      :repos
+    ]).merge({repos: selected_repos})
   end
 
   def profile
@@ -87,4 +65,11 @@ class ProfilesController < ApplicationController
     params[:action] == 'create' && Profile.new(profile_params)
   end
 
+  def user_repos
+    profile.user_repos.all
+  end
+
+  def selected_repos
+    Repo.find(params['repos'])
+  end
 end

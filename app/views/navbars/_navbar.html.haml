@@ -12,6 +12,8 @@
         - if current_user.profile?
           %li= link_to 'View My Profile', profile_url(current_user.profile)
           %li= link_to 'Edit My Profile', edit_profile_url(current_user.profile)
+        - if current_user.developer?
+          %li= link_to 'Sync Repos', user_sync_repos_url(current_user), method: :patch
     %ul
       - if current_user
         %li= current_user.email

@@ -13,4 +13,8 @@
 = f.label :position
 = f.text_field :position
 
+- current_user.repos.each do |repo|
+  = f.label repo.name
+  = check_box_tag 'repos[]', repo.id
+
 = f.submit

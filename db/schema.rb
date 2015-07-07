@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 20150628232107) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "whitelist_id"
+    t.integer  "profile_id"
   end
 
+  add_index "repos", ["profile_id"], name: "index_repos_on_profile_id"
   add_index "repos", ["user_id"], name: "index_repos_on_user_id"
-  add_index "repos", ["whitelist_id"], name: "index_repos_on_whitelist_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -59,13 +59,5 @@ ActiveRecord::Schema.define(version: 20150628232107) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["profile_id"], name: "index_users_on_profile_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "whitelists", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "whitelists", ["user_id"], name: "index_whitelists_on_user_id"
 
 end

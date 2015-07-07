@@ -10,8 +10,11 @@
 #
 class Profile < ActiveRecord::Base
   has_one :user
+  has_many :repos
+
+  accepts_nested_attributes_for :repos
+
   delegate :nickname, to: :user
-  delegate :repos, to: :user
 
   def full_name
     first_name + ' ' + last_name

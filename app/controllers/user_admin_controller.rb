@@ -14,6 +14,12 @@ class UserAdminController < ApplicationController
     end
   end
 
+  def sync_repos
+    binding.pry
+    user.sync_repos
+    redirect_to user_url(user)
+  end
+
   private
 
   def users
@@ -41,7 +47,7 @@ class UserAdminController < ApplicationController
   end
 
   def found
-    %w(show edit update).include?(params[:action]) && User.find(params[:id])
+    %w(show edit update sync_repos).include?(params[:action]) && User.find(params[:id])
   end
 
   def blank

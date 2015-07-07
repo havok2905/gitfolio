@@ -8,4 +8,5 @@
 # datetime :updated_at
 class Repo < ActiveRecord::Base
   belongs_to :user
+  belongs_to :profile
 end

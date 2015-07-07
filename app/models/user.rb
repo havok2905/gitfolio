@@ -20,8 +20,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:github]
 
   enum role: [:admin, :developer]
@@ -40,11 +39,6 @@ class User < ActiveRecord::Base
     end
 
     # rubocop:disable Metrics/AbcSize
-    # This seems to be the standard solution for this kind of creation
-    # from omniauth. Rather than fight the community over a single complexity
-    # point, I'm letting the linter ignore this.
-    #
-    # Assignment Branch Condition size for from_omniauth is too high. [16/15]
     def from_omniauth(auth)
       where(provider: provider(auth), uid: uid(auth)).first_or_create do |user|
         user.provider = provider(auth)
@@ -87,4 +81,18 @@ class User < ActiveRecord::Base
   def profile?
     profile.present? && role == 'developer'
   end
+
+  def sync_repos
+    repo_list = api.repo_data(username: nickname).map do |r|
+      Repo.first_or_create( url: r[:url], description: r[:description], name: r[:name], user_id: id)
+    end
+    update_attributes repos: repo_list
+  end
+
+  private
+
+  def api
+    @api ||= GithubApi.new
+  end
+
 end

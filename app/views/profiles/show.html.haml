@@ -10,7 +10,7 @@
   %dd= profile.email
 
 %ul
-  - @repos.each do |repo|
+  - profile.repos.each do |repo|
     %li
       %a{href: repo.url}= repo.name
     %li= repo.description

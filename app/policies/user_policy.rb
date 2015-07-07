@@ -15,4 +15,8 @@ class UserPolicy < ApplicationPolicy
   def show?
     admin?
   end
+
+  def sync_repos?
+    admin? || developer?
+  end
 end
