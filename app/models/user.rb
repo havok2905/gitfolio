@@ -83,19 +83,17 @@ class User < ActiveRecord::Base
   end
 
   def whitelist
-    repos.select do |r|
-      r.whitelist
-    end
+    repos.select(&:whitelist)
   end
 
   def sync_repos
     repo_list = api.repo_data(username: nickname).map do |r|
-      Repo.where(user_id: id, name: r[:name]).first_or_create({
+      Repo.where(user_id: id, name: r[:name]).first_or_create(
         url: r[:url],
         description: r[:description],
         name: r[:name],
         user_id: id
-      })
+      )
     end
     update_attributes repos: repo_list
   end
