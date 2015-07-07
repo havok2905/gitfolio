@@ -16,7 +16,7 @@ class UserAdminController < ApplicationController
 
   def sync_repos
     user.sync_repos
-    redirect_to user_url(user)
+    redirect_to root_url
   end
 
   private
