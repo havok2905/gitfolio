@@ -4,25 +4,25 @@
   h1 {
     margin: 70px 0 0 0;
     text-align: center;
-    color: $blue;
+    color: $white;
   }
 
   h2 {
     margin: 0 0 20px 0;
     text-align: center;
-    color: $grey;
+    color: $green_light;
   }
 
   h3 {
     margin: 70px 0 20px 0;
     text-align: center;
-    color: $grey;
+    color: $green_light;
   }
 
   h4 {
     margin: 20px 0;
     text-transform: capitalize;
-    color: $blue_light;
+    color: $white;
   }
 
   dl {
@@ -41,7 +41,7 @@
   }
 
   .project {
-    background-color: $grey;
+    background-color: $black;
     box-shadow: 0px 0px 7px #000000;
     width: 31.33%;
     height: 200px;
@@ -53,16 +53,18 @@
 
     p {
       margin: 30px;
-      color: $blue_light;
+      color: $grey;
+      font-size: 12px;
     }
 
     a {
-      color: $blue;
+      color: $grey;
       text-decoration:none;
       transition: color 0.5s;
+      font-size: 12px;
 
       &:hover, &:active {
-        color: $blue_light;
+        color: $white;
         transition: color 0.5s;
       }
     }

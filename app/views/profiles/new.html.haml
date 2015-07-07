@@ -1,3 +1,4 @@
-%h1 Profile Setup
-= form_for :profile, url: {action: 'create'} do |f|
-  = render 'fields', f: f
+.form
+  %h1 Profile Setup
+  = form_for :profile, url: {action: 'create'} do |f|
+    = render 'fields', f: f
