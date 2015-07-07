@@ -1,5 +1,6 @@
 .profile
   %h1= "#{profile.full_name}'s Profile"
+  %h2= profile.tagline
   %dl
     %dt Github:
     %dd= profile.nickname
@@ -7,12 +8,11 @@
     %dd= profile.position
     %dt Email:
     %dd= profile.email
-  %h2= profile.tagline
 
-
-
-  %ul
+  %section.projects
+    %h3 Projects
     - current_user.whitelist.each do |repo|
-      %li
+      .project
         %a{href: repo.url}= repo.name
-      %li= repo.description
+        %p= repo.description
+    .clearfix
