@@ -1,11 +1,12 @@
 @import "colors";
 
 nav.navbar {
-  background-color: $black;
+  background-color: $blue;
   font-size: 12px;
   margin: 0;
-  padding: 20px;
+  padding: 25px;
   box-sizing: border-box;
+  box-shadow: 0px 0px 10px $black;
 
   ul {
     display: inline-block;

@@ -1,0 +1,25 @@
+.form {
+  width: 1100px;
+  margin: 0 auto;
+  padding: 30px;
+
+  form {
+    label, input {
+      display: block;
+    }
+
+    label {
+      color: $blue_dark;
+      margin: 20px 0 10px 0;
+    }
+
+    input[type='text'] {
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      border: none;
+      background-color: $blue;
+      color: $blue_light;
+    }
+  }
+}
