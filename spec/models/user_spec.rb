@@ -61,6 +61,14 @@ RSpec.describe User do
         end
       end
     end
+
+    context '#sync_repos' do
+      #TODO: add test here
+    end
+
+    context '#whitelist' do
+      #TODO: add test here
+    end
   end
 
   context 'class methods' do

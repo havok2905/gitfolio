@@ -21,4 +21,8 @@ RSpec.describe UserAdminController do
       expect(response).to redirect_to user_path(@user)
     end
   end
+
+  context '#sync_repos' do
+    #TODO: add tests for syncing repos
+  end
 end

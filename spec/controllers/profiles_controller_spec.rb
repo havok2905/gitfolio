@@ -28,14 +28,6 @@ RSpec.describe ProfilesController do
     login_admin
   end
 
-  context '#show' do
-    it 'should return a valid list of repositories' do
-      @user = create(:developer, email: 'foo@foo.foo')
-      get :show, id: @user.profile.id
-      expect(assigns(:repos)).to be_truthy
-    end
-  end
-
   context '#update' do
     it 'should update a profile' do
       @profile = create(:profile)

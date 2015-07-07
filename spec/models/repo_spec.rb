@@ -7,6 +7,9 @@ RSpec.describe Repo do
     @repo = Repo.new
   end
 
-  context 'instance methods' do
+  context 'class methods' do
+    context '#update_whitelist' do
+      #TODO: add test here
+    end
   end
 end

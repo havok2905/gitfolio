@@ -8,8 +8,15 @@ RSpec.describe UserPolicy do
 
   permissions :index?, :edit?, :update?, :show? do
     it 'denies access unless user is an admin' do
-      expect(subject).to permit(admin, :profile)
-      expect(subject).not_to permit(developer, :profile)
+      expect(subject).to permit(admin, :user)
+      expect(subject).not_to permit(developer, :user)
+    end
+  end
+
+  permissions :sync_repos? do
+    it 'denies access unless user is an admin or developer' do
+      expect(subject).to permit(admin, :user)
+      expect(subject).to permit(developer, :user)
     end
   end
 end
