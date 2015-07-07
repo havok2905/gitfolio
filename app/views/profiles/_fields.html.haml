@@ -15,6 +15,6 @@
 
 - current_user.repos.each do |repo|
   = f.label repo.name
-  = check_box_tag 'repos[]', repo.id
+  = check_box_tag 'repo_ids[]', repo.id, repo.whitelist
 
 = f.submit

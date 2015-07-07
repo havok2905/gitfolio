@@ -12,7 +12,7 @@
 
 
   %ul
-    - profile.repos.each do |repo|
+    - current_user.whitelist.each do |repo|
       %li
         %a{href: repo.url}= repo.name
       %li= repo.description

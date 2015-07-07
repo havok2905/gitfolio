@@ -8,7 +8,8 @@ class ProfilesController < ApplicationController
 
   def create
     if profile.save
-      assign_developer_profile
+      update_whitelist
+      setup_developer_profile
       redirect_to profile_url(profile)
     else
       redirect_to new_profile_url
@@ -17,6 +18,7 @@ class ProfilesController < ApplicationController
 
   def update
     if profile.update_attributes profile_params
+      update_whitelist
       redirect_to profile_url(profile)
     else
       redirect_to edit_profile_url(profile)
@@ -25,7 +27,12 @@ class ProfilesController < ApplicationController
 
   private
 
-  def assign_developer_profile
+  def update_whitelist
+    return unless current_user.developer?
+    Repo.update_whitelist(current_user, selected_repos)
+  end
+
+  def setup_developer_profile
     return unless current_user.developer?
     current_user.update_attributes profile: profile
   end
@@ -36,9 +43,8 @@ class ProfilesController < ApplicationController
       :last_name,
       :email,
       :tagline,
-      :position,
-      :repos
-    ]).merge({repos: selected_repos})
+      :position
+    ])
   end
 
   def profile
@@ -70,6 +76,6 @@ class ProfilesController < ApplicationController
   end
 
   def selected_repos
-    Repo.find(params['repos'])
+    params['repo_ids']
   end
 end

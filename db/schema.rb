@@ -30,10 +30,9 @@ ActiveRecord::Schema.define(version: 20150628232107) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "profile_id"
+    t.boolean  "whitelist"
   end
 
-  add_index "repos", ["profile_id"], name: "index_repos_on_profile_id"
   add_index "repos", ["user_id"], name: "index_repos_on_user_id"
 
   create_table "users", force: :cascade do |t|

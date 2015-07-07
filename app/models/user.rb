@@ -82,8 +82,13 @@ class User < ActiveRecord::Base
     profile.present? && role == 'developer'
   end
 
+  def whitelist
+    repos.select do |r|
+      r.whitelist
+    end
+  end
+
   def sync_repos
-    binding.pry
     repo_list = api.repo_data(username: nickname).map do |r|
       Repo.where(user_id: id, name: r[:name]).first_or_create({
         url: r[:url],
