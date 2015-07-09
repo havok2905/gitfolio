@@ -1,32 +1,30 @@
 @import "colors";
 
 .profile {
+  color: $white;
+
   h1 {
-    margin: 70px 0 0 0;
     text-align: center;
-    color: $white;
   }
 
   h2 {
-    margin: 0 0 20px 0;
+    margin: 0 0 5px 0;
     text-align: center;
-    color: $green_light;
   }
 
   h3 {
     margin: 70px 0 20px 0;
     text-align: center;
-    color: $green_light;
+    color: $blue_dark;
   }
 
   h4 {
     margin: 20px 0;
     text-transform: capitalize;
-    color: $white;
   }
 
   dl {
-    color: $grey;
+    color: $blue_dark;
     margin-top: 10px;
     text-align: center;
     font-size: 12px;

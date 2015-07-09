@@ -2,8 +2,11 @@
 
 html, body {
   font-family: 'Montserrat', sans-serif;
-  background-color: $blue;
+  font-size: 12px;
   color: $white;
+  content: '';
+  background-image: url(image-path('textured_paper.png'));
+  z-index: -1;
 }
 
 .clearfix {
