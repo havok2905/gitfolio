@@ -8,10 +8,12 @@
     %dd= profile.position
     %dt Email:
     %dd= profile.email
-
+  %section.languages
+    - profile.user.top_languages.each do |lang|
+      %p= lang[:name]
   %section.projects
     %h3 Projects
-    - current_user.whitelist.each do |repo|
+    - profile.user.whitelist.each do |repo|
       .project
         %h4= repo.name
         %p= repo.description

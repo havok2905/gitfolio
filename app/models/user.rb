@@ -86,6 +86,11 @@ class User < ActiveRecord::Base
     repos.select(&:whitelist)
   end
 
+  def top_languages
+    languages = language_totals
+    [languages[0], languages[1], languages[2]]
+  end
+
   def sync_repos
     repo_list = api.repo_data(username: nickname).map do |r|
       repo = Repo.where(user_id: id, name: r[:name]).first_or_create(
@@ -101,11 +106,31 @@ class User < ActiveRecord::Base
 
       repo
     end
-    
+
     update_attributes repos: repo_list
   end
 
   private
+
+  def language_totals
+    languages = Hash.new
+
+    repos.each do |repo|
+      repo.repo_languages.each do |language|
+        unless languages[language.name]
+          languages[language.name] = language.lines
+        else
+          languages[language.name] += language.lines
+        end
+      end
+    end
+
+    languages.map      { |key, value| {name: key, count: value} }
+             .group_by { |lang| lang[:count] }
+             .sort_by  { |a, b| -a }
+             .map      { |c| c[1] }
+             .flatten
+  end
 
   def language(args)
     RepoLanguage.where(args).first_or_create(args)
