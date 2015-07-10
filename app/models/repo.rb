@@ -10,6 +10,7 @@
 class Repo < ActiveRecord::Base
   belongs_to :user
   belongs_to :profile
+  has_many :repo_languages
 
   class << self
     def update_whitelist(user, selected_repos)
@@ -18,5 +19,11 @@ class Repo < ActiveRecord::Base
         r.update_attributes(whitelist: true)
       end
     end
+  end
+
+  def primary_language
+    repo_languages.reduce { |a, b|
+      a.lines > b.lines ? a : b
+    }.name
   end
 end

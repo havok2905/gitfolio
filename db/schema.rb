@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628232107) do
+ActiveRecord::Schema.define(version: 20150709231558) do
 
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20150628232107) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "repo_languages", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "lines"
+    t.integer  "repo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "repo_languages", ["repo_id"], name: "index_repo_languages_on_repo_id"
 
   create_table "repos", force: :cascade do |t|
     t.string   "url"

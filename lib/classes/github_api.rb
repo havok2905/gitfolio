@@ -12,7 +12,6 @@ class GithubApi
     HTTParty.get "#{@root}/users/#{args[:username]}/repos", params
   end
 
-  # THIS IS AN EVIL METHOD THAT NEEDS FILTERING
   def repo_data(args)
     repos = HTTParty.get "#{@root}/users/#{args[:username]}/repos", params
     repos.map do |repo|
