@@ -19,4 +19,14 @@ class Profile < ActiveRecord::Base
   def full_name
     first_name + ' ' + last_name
   end
+
+  def user_repos
+    user.repos.all
+  end
+
+  def view_model
+    languages = RepositoryLanguageList.languages_from user_repos
+    list = RepositoryLanguageList.new(languages: languages)
+    ProfileViewModel.build(profile: self, whitelist: user.whitelist, languages: list.top_languages)
+  end
 end

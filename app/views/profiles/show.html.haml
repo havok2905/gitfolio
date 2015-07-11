@@ -1,19 +1,19 @@
 .profile
-  %h1= profile.full_name
-  %h2= profile.tagline
+  %h1= profile[:name]
+  %h2= profile[:tagline]
   %dl
     %dt Github:
-    %dd= profile.nickname
+    %dd= profile[:nickname]
     %dt Current Position:
-    %dd= profile.position
+    %dd= profile[:position]
     %dt Email:
-    %dd= profile.email
+    %dd= profile[:email]
   %section.languages
-    - top_languages.each do |lang|
+    - profile[:languages].each do |lang|
       %p= lang[:name]
   %section.projects
     %h3 Projects
-    - whitelist.each do |repo|
+    - profile[:whitelist].each do |repo|
       .project
         %h4= repo.name
         %p= repo.description

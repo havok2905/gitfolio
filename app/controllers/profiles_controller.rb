@@ -1,7 +1,7 @@
 # Controller for User tailored profile pages for the public
 class ProfilesController < ApplicationController
 
-  helper_method :profile, :profiles, :user_repos, :top_languages, :whitelist
+  helper_method :profile, :profiles, :user_repos
 
   before_action :authenticate_user!, except: [:show]
   before_action { authorize :profile }
@@ -27,16 +27,6 @@ class ProfilesController < ApplicationController
 
   private
 
-  def update_whitelist
-    return unless current_user.developer?
-    Repo.update_whitelist(current_user, selected_repos)
-  end
-
-  def setup_developer_profile
-    return unless current_user.developer?
-    current_user.update_attributes profile: profile
-  end
-
   def profile_params
     params.require(:profile).permit([
       :first_name,
@@ -56,36 +46,40 @@ class ProfilesController < ApplicationController
   end
 
   def load_profile
-    blank || found || created
-  end
-
-  def found
-    %w(show edit update).include?(params[:action]) && Profile.find(params[:id])
+    blank || found || created || view_model
   end
 
   def blank
-    params[:action] == 'new' && Profile.new
+    %w(new).include?(params[:action]) && Profile.new
+  end
+
+  def found
+    %w(edit update).include?(params[:action]) && Profile.find(params[:id])
   end
 
   def created
-    params[:action] == 'create' && Profile.new(profile_params)
+    %w(create).include?(params[:action]) && Profile.new(profile_params)
+  end
+
+  def view_model
+    %w(show).include?(params[:action]) && Profile.find(params[:id]).view_model
+  end
+
+  def update_whitelist
+    return unless current_user.developer?
+    Repo.update_whitelist(current_user, selected_repos)
+  end
+
+  def setup_developer_profile
+    return unless current_user.developer?
+    current_user.update_attributes profile: profile
   end
 
   def user_repos
-    profile.user.repos.all
+    profile.user_repos
   end
 
   def selected_repos
     params['repo_ids']
-  end
-
-  def top_languages
-    languages = RepositoryLanguageList.languages_from user_repos
-    list = RepositoryLanguageList.new(languages: languages)
-    list.top_languages
-  end
-
-  def whitelist
-    profile.user.whitelist
   end
 end
