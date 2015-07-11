@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   patch '/user/:id/sync_repos', to: 'user_admin#sync_repos', as: :user_sync_repos
 
   get '/home', to: 'index#index', as: :home
-    
+
   devise_scope :user do
     authenticated :user do
       root 'index#index', as: :authenticated_root

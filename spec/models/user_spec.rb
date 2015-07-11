@@ -7,6 +7,12 @@ RSpec.describe User do
     @user = User.new
   end
 
+  context 'class methods' do
+    context '#role_names' do
+      # TODO: Write test here
+    end
+  end
+
   context 'instance methods' do
     context '#needs_profile?' do
       context 'developer user' do

@@ -21,7 +21,7 @@ RSpec.describe ProfilePolicy do
     end
   end
 
-  permissions :new? do
+  permissions :new?, :create? do
     it 'denies access unless user is an admin or a profileless developer' do
       expect(subject).to permit(admin, :profile)
       expect(subject).to permit(developer, :profile)
@@ -29,22 +29,7 @@ RSpec.describe ProfilePolicy do
     end
   end
 
-  permissions :create? do
-    it 'denies access unless user is an admin or a profileless developer' do
-      expect(subject).to permit(admin, :profile)
-      expect(subject).to permit(developer, :profile)
-      expect(subject).not_to permit(developer_with_profile, :profile)
-    end
-  end
-
-  permissions :edit? do
-    it 'denies access unless the user is an admin or developer' do
-      expect(subject).to permit(admin, :profile)
-      expect(subject).to permit(developer, :profile)
-    end
-  end
-
-  permissions :update? do
+  permissions :edit?, :update? do
     it 'denies access unless the user is an admin or developer' do
       expect(subject).to permit(admin, :profile)
       expect(subject).to permit(developer, :profile)

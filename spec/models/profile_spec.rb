@@ -15,5 +15,13 @@ RSpec.describe Profile do
         expect(@profile.full_name).to eq('Chris McLean')
       end
     end
+
+    context '#user_repos' do
+      # TODO: Write test
+    end
+
+    context '#view_model' do
+      # TODO: Write test
+    end
   end
 end

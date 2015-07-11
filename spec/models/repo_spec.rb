@@ -12,4 +12,10 @@ RSpec.describe Repo do
       # TODO: add test here
     end
   end
+
+  context 'instance methods' do
+    context '#primary_language' do
+      # TODO: add test here
+    end
+  end
 end
