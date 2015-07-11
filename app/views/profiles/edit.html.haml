@@ -1,4 +1,5 @@
-.form
-  %h1 Profile Edit
-  = form_for profile, url: {action: "update"} do |f|
-    = render 'fields', f: f
+%section.-container
+  .form
+    %h1 Profile Edit
+    = form_for profile, url: {action: "update"} do |f|
+      = render 'fields', f: f

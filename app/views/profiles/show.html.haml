@@ -1,22 +1,23 @@
-.profile
-  %h1= profile[:name]
-  %h2= profile[:tagline]
-  %dl
-    %dt Github:
-    %dd= profile[:nickname]
-    %dt Current Position:
-    %dd= profile[:position]
-    %dt Email:
-    %dd= profile[:email]
-  %section.languages
-    - profile[:languages].each do |lang|
-      %p= lang[:name]
-  %section.projects
-    %h3 Projects
-    - profile[:whitelist].each do |repo|
-      .project
-        %h4= repo.name
-        %p= repo.description
-        %p= repo.primary_language
-        %a{href: repo.url} code
-    .clearfix
+%section.-container
+  .profile
+    %h1= profile[:name]
+    %h2= profile[:tagline]
+    %dl
+      %dt Github:
+      %dd= profile[:nickname]
+      %dt Current Position:
+      %dd= profile[:position]
+      %dt Email:
+      %dd= profile[:email]
+    %section.languages
+      - profile[:languages].each do |lang|
+        %p= lang[:name]
+    %section
+      %h3 Projects
+      - profile[:whitelist].each do |repo|
+        .project
+          %h4= repo.name
+          %p= repo.description
+          %p= repo.primary_language
+          %a{href: repo.url} code
+      .clearfix
