@@ -23,6 +23,6 @@ RSpec.describe UserAdminController do
   end
 
   context '#sync_repos' do
-    #TODO: add tests for syncing repos
+    # TODO: add tests for syncing repos
   end
 end

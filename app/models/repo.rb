@@ -22,8 +22,8 @@ class Repo < ActiveRecord::Base
   end
 
   def primary_language
-    repo_languages.reduce { |a, b|
+    repo_languages.reduce do |a, b|
       a.bytes > b.bytes ? a : b
-    }.name
+    end.name
   end
 end

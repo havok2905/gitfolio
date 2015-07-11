@@ -9,7 +9,7 @@ RSpec.describe Repo do
 
   context 'class methods' do
     context '#update_whitelist' do
-      #TODO: add test here
+      # TODO: add test here
     end
   end
 end
