@@ -80,7 +80,8 @@ class ProfilesController < ApplicationController
   end
 
   def top_languages
-    list = RepositoryLanguageList.new(repos: user_repos)
+    languages = RepositoryLanguageList.languages_from user_repos
+    list = RepositoryLanguageList.new(languages: languages)
     list.top_languages
   end
 
