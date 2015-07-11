@@ -9,14 +9,24 @@ class RepositoryLanguageList
       repos.each do |repo|
         repo.repo_languages.each do |language|
           if languages[language.name]
-            languages[language.name][:bytes] += language.bytes
-            languages[language.name][:repos] += 1
+            language_update(languages, language)
           else
-            languages[language.name] = { bytes: language.bytes, repos: 1 }
+            language_init(languages, language)
           end
         end
       end
       languages
+    end
+
+    private
+
+    def language_init(languages, language)
+      languages[language.name] = { bytes: language.bytes, repos: 1 }
+    end
+
+    def language_update(languages, language)
+      languages[language.name][:bytes] += language.bytes
+      languages[language.name][:repos] += 1
     end
   end
 
