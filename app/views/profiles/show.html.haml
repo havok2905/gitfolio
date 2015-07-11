@@ -11,8 +11,12 @@
       %dd= profile[:email]
     %section.languages
       %h3 Languages
-      - profile[:languages].each do |lang|
-        %p= lang[:name]
+      %ul
+        - profile[:languages].each do |lang|
+          %li
+            = render "svg/#{lang[:name]}".downcase
+            %h4= lang[:name]
+      .clearfix
     %section
       %h3 Projects
       - profile[:whitelist].each do |repo|

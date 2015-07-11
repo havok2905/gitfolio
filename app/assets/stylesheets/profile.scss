@@ -17,6 +17,27 @@
     dd, dt { display: inline; }
   }
 
+  .languages {
+    ul {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+
+      li {
+        display: inline-block;
+        margin: 30px;
+
+        svg {
+          width: 150px;
+
+          path {
+            fill: $white;
+          }
+        }
+      }
+    }
+  }
+
   .project {
     background-color: $black;
     box-shadow: 0px 0px 7px #000000;
