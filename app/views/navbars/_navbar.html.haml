@@ -1,7 +1,7 @@
 %header
   %nav.navbar
     %ul.left
-      %li= link_to 'Home', root_url
+      %li= link_to 'Home', home_url
       - if policy(:profile).index?
         %li= link_to 'Profiles', profiles_url
       - if policy(:user).index?

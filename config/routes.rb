@@ -5,5 +5,15 @@ Rails.application.routes.draw do
   resources :users,    controller: 'user_admin', only: [:index, :show, :new, :update, :edit]
   patch '/user/:id/sync_repos', to: 'user_admin#sync_repos', as: :user_sync_repos
 
-  root 'index#index'
+  get '/home', to: 'index#index', as: :home
+    
+  devise_scope :user do
+    authenticated :user do
+      root 'index#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
 end
