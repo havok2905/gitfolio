@@ -1,0 +1,36 @@
+@import "colors";
+
+.button {
+  width: 200px;
+  height: 50px;
+
+  display: inline-block;
+
+  outline: none;
+  border: none;
+  border-radius: 5px;
+
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+  color: $white;
+
+  svg {
+    fill: $white;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+  }
+
+  &.-default {
+    background-color: $blue_dark;
+
+    &:hover { background-color: $blue_dark_hover; }
+  }
+
+  &.-constructive {
+    background-color: $green;
+
+    &:hover { background-color: $green_hover; }
+  }
+}
