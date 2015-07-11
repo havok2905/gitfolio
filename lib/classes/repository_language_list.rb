@@ -9,9 +9,10 @@ class RepositoryLanguageList
       repos.each do |repo|
         repo.repo_languages.each do |language|
           if languages[language.name]
-            languages[language.name] += language.bytes
+            languages[language.name][:bytes] += language.bytes
+            languages[language.name][:repos] += 1
           else
-            languages[language.name] = language.bytes
+            languages[language.name] = { bytes: language.bytes, repos: 1 }
           end
         end
       end
@@ -31,11 +32,13 @@ class RepositoryLanguageList
   private
 
   def ranked(languages)
-    languages.map { |key, value| { name: key, count: value } }
-      .group_by { |lang| lang[:count] }
-      .sort_by { |a, _b| -a }
-      .map { |c| c[1] }
-      .flatten
+    languages.map { |key, value| { name: key, bytes: value[:bytes], repos: value[:repos] } }
+      .sort_by { |lang| -score(lang) }
+  end
+
+  def score(language)
+    byte_score = Math.log10 language[:bytes]
+    language[:repos] * byte_score
   end
 
 end
