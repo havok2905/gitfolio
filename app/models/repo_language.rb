@@ -1,7 +1,7 @@
 # RepoLanguage Model
 #
 # string :name
-# integer :lines
+# integer :bytes
 # integer :repo_id
 # datetime :created_at
 # datetime :updated_at
