@@ -14,3 +14,7 @@ tool. It will support a few basic features.
 - Rspec for unit and integration testing
 - Devise for user authentication
 - Pundit for role management
+
+## Secrets
+Collaborating developers should seek out the secrets file
+for use in the project.
