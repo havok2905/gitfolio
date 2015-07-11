@@ -5,6 +5,9 @@ tool. It will support a few basic features.
 - User filtering
 - Github data mining
 
+## Trello Board
+[https://trello.com/b/sivK6e8l/gitfolio](https://trello.com/b/sivK6e8l/gitfolio)
+
 ## Stack
 - Currently OSX for development. Eventually switching to an Ubuntu VM
 - Currently a SQLite DB. Will eventually switch to Postgres
