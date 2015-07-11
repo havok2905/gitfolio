@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150709231558) do
 
   create_table "repo_languages", force: :cascade do |t|
     t.string   "name"
-    t.integer  "lines"
+    t.integer  "bytes"
     t.integer  "repo_id"
     t.datetime "created_at"
     t.datetime "updated_at"

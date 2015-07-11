@@ -1,7 +1,7 @@
 # Controller for User tailored profile pages for the public
 class ProfilesController < ApplicationController
 
-  helper_method :profile, :profiles, :user_repos
+  helper_method :profile, :profiles, :user_repos, :top_languages, :whitelist
 
   before_action :authenticate_user!, except: [:show]
   before_action { authorize :profile }
@@ -72,10 +72,19 @@ class ProfilesController < ApplicationController
   end
 
   def user_repos
-    current_user.repos.all
+    profile.user.repos.all
   end
 
   def selected_repos
     params['repo_ids']
+  end
+
+  def top_languages
+    list = RepositoryLanguageList.new(repos: user_repos)
+    list.top_languages
+  end
+
+  def whitelist
+    profile.user.whitelist
   end
 end

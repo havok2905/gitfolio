@@ -2,7 +2,7 @@ class CreateRepoLanguages < ActiveRecord::Migration
   def change
     create_table :repo_languages do |t|
       t.string :name
-      t.integer :lines
+      t.integer :bytes
       t.integer :repo_id
       t.timestamps
     end
