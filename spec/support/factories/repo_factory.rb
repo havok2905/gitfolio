@@ -5,6 +5,5 @@ FactoryGirl.define do
     name 'gitfolio'
     description 'A github based portfolio site generator and developer hiring tool'
     whitelist false
-    user_id 1
   end
 end

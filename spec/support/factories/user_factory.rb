@@ -6,7 +6,6 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
     nickname 'havok2905'
-    association :profile, factory: :profile
   end
 
   factory :admin, class: User do
