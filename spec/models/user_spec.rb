@@ -9,7 +9,9 @@ RSpec.describe User do
 
   context 'class methods' do
     context '#role_names' do
-      # TODO: Write test here
+      it 'should return a list' do
+        expect(User.role_names.empty?).to be(false)
+      end
     end
   end
 
@@ -73,7 +75,22 @@ RSpec.describe User do
     end
 
     context '#whitelist' do
-      # TODO: add test here
+      before :each do
+        @whitelist_repo = create(:repo, {
+          user: create(:developer, email: 'foo@foo.foo'),
+          whitelist: true
+        })
+
+        @normal_repo = create(:repo, {
+          user: create(:developer, email: 'bar@bar.bar'),
+          whitelist: false
+        })
+      end
+
+      it 'should only return whitelisted repositories' do
+        expect(@normal_repo.user.whitelist.empty?).to be(true)
+        expect(@whitelist_repo.user.whitelist.empty?).to be(false)
+      end
     end
   end
 
