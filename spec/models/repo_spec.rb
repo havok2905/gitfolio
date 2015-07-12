@@ -16,13 +16,7 @@ RSpec.describe Repo do
   context 'instance methods' do
     context '#primary_language' do
       it 'should return the primary language' do
-        repo = create :repo, whitelist: true, repo_languages: [
-          RepoLanguage.create({ name: 'javascript', bytes: 1000000 }),
-          RepoLanguage.create({ name: 'php', bytes: 100000 }),
-          RepoLanguage.create({ name: 'c', bytes: 100000 }),
-        ]
-
-        expect(repo.primary_language).to eq('javascript') 
+        expect(full_repo.primary_language).to eq('c')
       end
     end
   end

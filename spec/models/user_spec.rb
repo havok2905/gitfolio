@@ -1,4 +1,5 @@
 require 'rails_helper'
+include RequiresRepo
 
 RSpec.describe User do
   subject { User }

@@ -1,4 +1,5 @@
 require 'rails_helper'
+include RequiresRepo
 
 RSpec.describe Profile do
   subject { Profile }
@@ -26,13 +27,7 @@ RSpec.describe Profile do
 
     context '#view_model' do
       before :each do
-        repo = create :repo, whitelist: true, repo_languages: [
-          RepoLanguage.create({ name: 'javascript', bytes: 100000 }),
-          RepoLanguage.create({ name: 'php', bytes: 100000 }),
-          RepoLanguage.create({ name: 'c', bytes: 100000 }),
-        ]
-
-        @profile = repo.user.profile
+        @profile = full_repo.user.profile
       end
 
       it 'should return a valid view model' do
