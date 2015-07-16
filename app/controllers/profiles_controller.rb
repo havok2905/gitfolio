@@ -26,7 +26,11 @@ class ProfilesController < ApplicationController
   end
 
   def publish
-    profile.update_attributes(published: true) && redirect_to(profile_path(profile))
+    profile.update_attributes(published: true) && redirect_to(profile_launch_path)
+  end
+
+  def deactivate
+    profile.update_attributes(published: false) && redirect_to(profile_launch_path)
   end
 
   private
@@ -54,11 +58,11 @@ class ProfilesController < ApplicationController
   end
 
   def blank
-    %w(new, index).include?(params[:action]) && Profile.new
+    %w(new, index, launch).include?(params[:action]) && Profile.new
   end
 
   def found
-    %w(edit update show publish).include?(params[:action]) && Profile.find(params[:id])
+    %w(edit update show publish deactivate).include?(params[:action]) && Profile.find(params[:id])
   end
 
   def created

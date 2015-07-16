@@ -46,7 +46,7 @@ RSpec.describe ProfilePolicy do
     end
   end
 
-  permissions :publish? do
+  permissions :publish?, :deactivate? do
     it 'allows access to profile owners' do
       expect(subject).not_to permit(admin, developer_with_profile.profile)
       expect(subject).not_to permit(developer, developer_with_profile.profile)

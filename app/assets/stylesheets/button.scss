@@ -33,4 +33,10 @@
 
     &:hover { background-color: $green_hover; }
   }
+
+  &.-destructive {
+    background-color: $red;
+
+    &:hover { background-color: $red_hover; }
+  }
 }

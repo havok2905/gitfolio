@@ -28,6 +28,14 @@ class ProfilePolicy < ApplicationPolicy
     current_users?
   end
 
+  def deactivate?
+    current_users?
+  end
+
+  def launch?
+    developer?
+  end
+
   private
 
   def no_profile?
