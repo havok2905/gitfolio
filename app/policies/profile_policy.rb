@@ -5,7 +5,7 @@ class ProfilePolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    @record.published? || current_users? || admin?
   end
 
   def new?
@@ -22,6 +22,10 @@ class ProfilePolicy < ApplicationPolicy
 
   def update?
     developer? || admin?
+  end
+
+  def publish?
+    current_users?
   end
 
   private

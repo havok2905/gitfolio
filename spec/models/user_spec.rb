@@ -77,15 +77,8 @@ RSpec.describe User do
 
     context '#whitelist' do
       before :each do
-        @whitelist_repo = create(:repo, {
-          user: create(:developer, email: 'foo@foo.foo'),
-          whitelist: true
-        })
-
-        @normal_repo = create(:repo, {
-          user: create(:developer, email: 'bar@bar.bar'),
-          whitelist: false
-        })
+        @whitelist_repo = create(:repo, user: create(:developer, email: 'foo@foo.foo'), whitelist: true)
+        @normal_repo = create(:repo, user: create(:developer, email: 'bar@bar.bar'), whitelist: false)
       end
 
       it 'should only return whitelisted repositories' do

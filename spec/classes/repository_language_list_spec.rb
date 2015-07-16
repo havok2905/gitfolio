@@ -7,7 +7,7 @@ RSpec.describe RepositoryLanguageList do
   context 'class methods' do
     context '#languages_from' do
       before :each do
-        @languages = RepositoryLanguageList.languages_from([full_repo]);
+        @languages = RepositoryLanguageList.languages_from([full_repo])
       end
 
       it 'should return a hash of languages from a given resource' do
@@ -19,15 +19,17 @@ RSpec.describe RepositoryLanguageList do
   context 'instance methods' do
     context '#top_languages' do
       before :each do
-        list = RepositoryLanguageList.new(languages: {
-          'PHP' => { bytes: 3000000, repos: 4 },
-          'JavaScript' => { bytes: 1000000, repos: 20 },
-          'Ruby' => { bytes: 300000, repos: 10 },
-          'HTML' => { bytes: 40000, repos: 7 },
-          'CSS' => { bytes: 30000, repos: 11 },
-          'Python' => { bytes: 3000, repos: 2 },
-          'Go' => { bytes: 1000, repos: 1 }
-        })
+        list = RepositoryLanguageList.new(
+          languages: {
+            'PHP' => { bytes: 3_000_000, repos: 4 },
+            'JavaScript' => { bytes: 1_000_000, repos: 20 },
+            'Ruby' => { bytes: 300_000, repos: 10 },
+            'HTML' => { bytes: 40_000, repos: 7 },
+            'CSS' => { bytes: 30_000, repos: 11 },
+            'Python' => { bytes: 3_000, repos: 2 },
+            'Go' => { bytes: 1_000, repos: 1 }
+          }
+        )
 
         @top_languages = list.top_languages
       end

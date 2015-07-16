@@ -1,25 +1,25 @@
 %section.-container
   .profile
-    %h1= profile[:name]
-    %h2= profile[:tagline]
+    %h1= profile.view_model[:name]
+    %h2= profile.view_model[:tagline]
     %dl
       %dt Github:
-      %dd= profile[:nickname]
+      %dd= profile.view_model[:nickname]
       %dt Current Position:
-      %dd= profile[:position]
+      %dd= profile.view_model[:position]
       %dt Email:
-      %dd= profile[:email]
+      %dd= profile.view_model[:email]
     %section.languages
       %h3 Languages
       %ul
-        - profile[:languages].each do |lang|
+        - profile.view_model[:languages].each do |lang|
           %li
             = render "svg/#{lang[:name]}".downcase
             %h4= lang[:name]
       .clearfix
     %section
       %h3 Projects
-      - profile[:whitelist].each do |repo|
+      - profile.view_model[:whitelist].each do |repo|
         .project
           %h4= repo.name
           %p= repo.description

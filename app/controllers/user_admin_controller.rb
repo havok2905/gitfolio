@@ -4,19 +4,19 @@ class UserAdminController < ApplicationController
   helper_method :users, :user
 
   before_action :authenticate_user!
-  before_action { authorize :user }
+  before_action { authorize user }
 
   def update
     if user.update_attributes user_params
-      redirect_to user_url(user)
+      redirect_to user_path(user)
     else
-      redirect_to edit_user_url(user)
+      redirect_to edit_user_path(user)
     end
   end
 
   def sync_repos
     user.sync_repos
-    redirect_to root_url
+    redirect_to authenticated_root_path
   end
 
   private

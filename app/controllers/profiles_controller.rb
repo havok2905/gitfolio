@@ -4,25 +4,29 @@ class ProfilesController < ApplicationController
   helper_method :profile, :profiles, :user_repos
 
   before_action :authenticate_user!, except: [:show]
-  before_action { authorize :profile }
+  before_action { authorize profile }
 
   def create
     if profile.save
       update_whitelist
       setup_developer_profile
-      redirect_to profile_url(profile)
+      redirect_to profile_path(profile)
     else
-      redirect_to new_profile_url
+      redirect_to new_profile_path
     end
   end
 
   def update
     if profile.update_attributes profile_params
       update_whitelist
-      redirect_to profile_url(profile)
+      redirect_to profile_path(profile)
     else
-      redirect_to edit_profile_url(profile)
+      redirect_to edit_profile_path(profile)
     end
+  end
+
+  def publish
+    profile.update_attributes(published: true) && redirect_to(profile_path(profile))
   end
 
   private
@@ -46,23 +50,19 @@ class ProfilesController < ApplicationController
   end
 
   def load_profile
-    blank || found || created || view_model
+    blank || found || created
   end
 
   def blank
-    %w(new).include?(params[:action]) && Profile.new
+    %w(new, index).include?(params[:action]) && Profile.new
   end
 
   def found
-    %w(edit update).include?(params[:action]) && Profile.find(params[:id])
+    %w(edit update show publish).include?(params[:action]) && Profile.find(params[:id])
   end
 
   def created
     %w(create).include?(params[:action]) && Profile.new(profile_params)
-  end
-
-  def view_model
-    %w(show).include?(params[:action]) && Profile.find(params[:id]).view_model
   end
 
   def update_whitelist

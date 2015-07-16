@@ -16,4 +16,9 @@ class ApplicationPolicy
   def admin?
     @user.admin? if @user
   end
+
+  def current_users?
+    return false unless @user.present?
+    @user.id == @record.user.id
+  end
 end

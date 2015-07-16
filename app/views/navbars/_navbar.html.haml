@@ -1,19 +1,21 @@
 %header
   %nav.navbar
     %ul.left
-      %li= link_to 'Home', home_url
+      %li= link_to 'Home', home_path
       - if policy(:profile).index?
-        %li= link_to 'Profiles', profiles_url
+        %li= link_to 'Profiles', profiles_path
       - if policy(:user).index?
-        %li= link_to 'Users', users_url
+        %li= link_to 'Users', users_path
       - if current_user
         - if current_user.needs_profile?
-          %li= link_to 'Make Profile', new_profile_url
+          %li= link_to 'Make Profile', new_profile_path
         - if current_user.profile?
-          %li= link_to 'View Profile', profile_url(current_user.profile)
-          %li= link_to 'Edit Profile', edit_profile_url(current_user.profile)
+          %li= link_to 'View Profile', profile_path(current_user.profile)
+          %li= link_to 'Edit Profile', edit_profile_path(current_user.profile)
         - if current_user.developer?
-          %li= link_to 'Sync Repos', user_sync_repos_url(current_user), method: :patch
+          %li= link_to 'Sync Repos', user_sync_repos_path(current_user), method: :patch
+        - if current_user.profile?
+          %li= link_to 'Publish Profile', profile_publish_path(current_user.profile), method: :patch
     %ul.right
       - if current_user
         %li= current_user.email

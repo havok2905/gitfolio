@@ -10,8 +10,8 @@ RSpec.describe ProfileViewModel do
       @view_model = ProfileViewModel.build(
         profile: user.profile,
         languages: [
-          { name: 'javascript', bytes: 5000, repos: 12 },
-          { name: 'php', bytes: 50005, repos: 10 },
+          { name: 'javascript', bytes: 5_000, repos: 12 },
+          { name: 'php', bytes: 50_005, repos: 10 },
           { name: 'css', bytes: 1000, repos: 10 }
         ],
         whitelist: [
@@ -20,7 +20,7 @@ RSpec.describe ProfileViewModel do
       )
     end
 
-    it 'should build a valid view model' do |variable|
+    it 'should build a valid view model' do
       expect(@view_model[:name].present?).to eq(true)
       expect(@view_model[:nickname].present?).to eq(true)
       expect(@view_model[:position].present?).to eq(true)

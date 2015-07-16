@@ -9,6 +9,6 @@
     %li= "Profiver: #{ user.provider || "_" }"
     %li= "Role: #{user.role || "_" }"
     - if user.profile
-      %li= link_to 'profile', profile_url(user)
+      %li= link_to 'profile', profile_path(user)
     - else
       %li No Profile
