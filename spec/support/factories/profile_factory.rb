@@ -5,5 +5,6 @@ FactoryGirl.define do
     tagline 'foobar foo bat baz foobar foo'
     position 'developer'
     email 'foo@foo.foo'
+    published false
   end
 end

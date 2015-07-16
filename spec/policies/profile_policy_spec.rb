@@ -31,6 +31,13 @@ RSpec.describe ProfilePolicy do
     )
   end
 
+  permissions :launch? do
+    it 'allows access to developers' do
+      expect(subject).to_not permit(admin, :profile)
+      expect(subject).to permit(developer, :profile)
+    end
+  end
+
   permissions :index? do
     it 'denies access unless user is an admin' do
       expect(subject).to permit(admin, :profile)

@@ -30,9 +30,9 @@ RSpec.describe ProfilesController do
 
   context '#update' do
     it 'should update a profile' do
-      @profile = create(:profile)
-      patch :update, id: @profile.id, profile: valid_update_params
-      expect(response).to redirect_to profile_path(@profile)
+      profile = create(:profile)
+      patch :update, id: profile.id, profile: valid_update_params
+      expect(response).to redirect_to profile_path(profile)
     end
   end
 
@@ -40,6 +40,26 @@ RSpec.describe ProfilesController do
     it 'should create a profile' do
       post :create, profile: valid_create_params
       expect(response).to redirect_to profile_path(Profile.last)
+    end
+  end
+
+  context '#publish' do
+    it 'should make a profile published' do
+      profile = create(:profile, user: User.first)
+      expect(profile.published).to be(false)
+      patch :publish, id: profile.id
+      profile.reload
+      expect(profile.published).to be(true)
+    end
+  end
+
+  context '#deactivate' do
+    it 'should make a profile deactivated' do
+      profile = create(:profile, user: User.first, published: true)
+      expect(profile.published).to be(true)
+      patch :deactivate, id: profile.id
+      profile.reload
+      expect(profile.published).to be(false)
     end
   end
 end
