@@ -2,6 +2,9 @@
   .profile
     %h1= profile.view_model[:name]
     %h2= profile.view_model[:tagline]
+    %a{href: "https://github.com/#{profile.view_model[:nickname]}", class: 'button -constructive' }
+      = render 'svg/github'
+      = profile.view_model[:nickname]
     %dl
       %dt Github:
       %dd= profile.view_model[:nickname]
