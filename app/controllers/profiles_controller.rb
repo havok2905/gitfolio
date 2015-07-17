@@ -58,7 +58,7 @@ class ProfilesController < ApplicationController
   end
 
   def blank
-    %w(new, index, launch).include?(params[:action]) && Profile.new
+    %w(new index launch).include?(params[:action]) && Profile.new
   end
 
   def found

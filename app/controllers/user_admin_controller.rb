@@ -50,10 +50,10 @@ class UserAdminController < ApplicationController
   end
 
   def blank
-    params[:action] == 'new' && User.new
+    %w(new index).include?(params[:action]) && User.new
   end
 
   def created
-    params[:action] == 'create' && User.new(user_params)
+    %w(create).include?(params[:action]) && User.new(user_params)
   end
 end
