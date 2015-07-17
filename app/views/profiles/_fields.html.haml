@@ -1,3 +1,4 @@
+%h3 Profile Info
 = f.label :fist_name
 = f.text_field :first_name
 
@@ -13,8 +14,9 @@
 = f.label :position
 = f.text_field :position
 
+%h3 Projects
 - current_user.repos.each do |repo|
   = f.label repo.name
   = check_box_tag 'repo_ids[]', repo.id, repo.whitelist
 
-= f.submit
+= f.submit 'Update Profile', class: 'button -constructive'
