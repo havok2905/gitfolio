@@ -1,12 +1,21 @@
-# Repo Model
+# == Schema Information
 #
-# string :url
-# string :description
-# string :name
-# integer :user_id
-# boolean :whitelist
-# datetime :created_at
-# datetime :updated_at
+# Table name: repos
+#
+#  id          :integer          not null, primary key
+#  url         :string
+#  description :string
+#  name        :string
+#  created_at  :datetime
+#  updated_at  :datetime
+#  user_id     :integer
+#  whitelist   :boolean
+#
+# Indexes
+#
+#  index_repos_on_user_id  (user_id)
+#
+
 class Repo < ActiveRecord::Base
   belongs_to :user
   belongs_to :profile

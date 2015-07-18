@@ -1,13 +1,18 @@
-# Profile Model
+# == Schema Information
 #
-# string :first_name
-# string :last_name
-# string :tagline
-# string :position
-# string :email
-# datetime :created_at
-# datetime :updated_at
+# Table name: profiles
 #
+#  id         :integer          not null, primary key
+#  first_name :string
+#  last_name  :string
+#  tagline    :string
+#  position   :string
+#  email      :string
+#  created_at :datetime
+#  updated_at :datetime
+#  published  :boolean          default(FALSE)
+#
+
 class Profile < ActiveRecord::Base
   has_one :user
   has_many :repos

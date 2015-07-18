@@ -45,6 +45,9 @@ group :development, :test do
   # Linting and static analysis
   gem 'clint_eastwood'
 
+  # Model and factory comments
+  gem 'annotate', '~> 2.6.6'
+
   # Unit Testing
   gem 'rspec-rails', '~> 3.2.3'
 

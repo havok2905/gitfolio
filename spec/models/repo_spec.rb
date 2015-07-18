@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: repos
+#
+#  id          :integer          not null, primary key
+#  url         :string
+#  description :string
+#  name        :string
+#  created_at  :datetime
+#  updated_at  :datetime
+#  user_id     :integer
+#  whitelist   :boolean
+#
+# Indexes
+#
+#  index_repos_on_user_id  (user_id)
+#
+
 require 'rails_helper'
 
 RSpec.describe Repo do
