@@ -17,19 +17,19 @@ class ProfilePolicy < ApplicationPolicy
   end
 
   def edit?
-    developer? || admin?
+    current_users? || admin?
   end
 
   def update?
-    developer? || admin?
+    current_users? || admin?
   end
 
   def publish?
-    current_users?
+    current_users? || admin?
   end
 
   def deactivate?
-    current_users?
+    current_users? || admin?
   end
 
   def launch?

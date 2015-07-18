@@ -53,9 +53,9 @@ RSpec.describe ProfilePolicy do
     end
   end
 
-  permissions :publish?, :deactivate? do
+  permissions :publish?, :deactivate?, :edit?, :update? do
     it 'allows access to profile owners' do
-      expect(subject).not_to permit(admin, developer_with_profile.profile)
+      expect(subject).to permit(admin, developer_with_profile.profile)
       expect(subject).not_to permit(developer, developer_with_profile.profile)
       expect(subject).to permit(developer_with_profile, developer_with_profile.profile)
     end
@@ -66,13 +66,6 @@ RSpec.describe ProfilePolicy do
       expect(subject).to permit(admin, :profile)
       expect(subject).to permit(developer, :profile)
       expect(subject).not_to permit(developer_with_profile, :profile)
-    end
-  end
-
-  permissions :edit?, :update? do
-    it 'denies access unless the user is an admin or developer' do
-      expect(subject).to permit(admin, :profile)
-      expect(subject).to permit(developer, :profile)
     end
   end
 end

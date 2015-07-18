@@ -30,7 +30,7 @@ RSpec.describe ProfilesController do
 
   context '#update' do
     it 'should update a profile' do
-      profile = create(:profile)
+      profile = create(:profile, user: User.last)
       patch :update, id: profile.id, profile: valid_update_params
       expect(response).to redirect_to profile_path(profile)
     end
