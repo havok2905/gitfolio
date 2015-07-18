@@ -53,6 +53,16 @@
     box-sizing: border-box;
     text-align: center;
     float: left;
+    transition: box-shadow 0.25s;
+
+    &:hover {
+      box-shadow: 0px 0px 20px #000000;
+      transition: box-shadow 0.25s;
+    }
+
+    h4 {
+      color: $white;
+    }
 
     p {
       margin: 30px;
@@ -71,6 +81,35 @@
         transition: color 0.5s;
       }
     }
+  }
+}
 
+@media (max-width: 850px) {
+  .profile {
+    .project {
+      width: 48%;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .profile {
+    .project {
+      width: 98%;
+    }
+
+    .languages ul li {
+      margin: 10px;
+
+      svg{
+        width: 75px;
+      }
+    }
+
+    dl {
+      dd, dt {
+        display: block;
+      }
+    }
   }
 }

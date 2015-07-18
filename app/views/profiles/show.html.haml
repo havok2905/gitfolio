@@ -6,8 +6,6 @@
       = render 'svg/github'
       = view_model[:nickname]
     %dl
-      %dt Github:
-      %dd= view_model[:nickname]
       %dt Current Position:
       %dd= view_model[:position]
       %dt Email:
@@ -23,9 +21,9 @@
     %section
       %h3 Projects
       - view_model[:whitelist].each do |repo|
-        .project
-          %h4= repo.name
-          %p= repo.description
-          %p= repo.primary_language
-          %a{href: repo.url} code
+        %a{href: repo.url}
+          .project
+            %h4= repo.name
+            %p= repo.description
+            %p= repo.primary_language
       .clearfix
