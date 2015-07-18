@@ -20,6 +20,12 @@ class Profile < ActiveRecord::Base
 
   delegate :nickname, to: :user
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :tagline, presence: true
+  validates :position, presence: true
+  validates :email, presence: true
+
   def full_name
     first_name + ' ' + last_name
   end

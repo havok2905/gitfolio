@@ -20,6 +20,9 @@ class Repo < ActiveRecord::Base
   belongs_to :profile
   has_many :repo_languages
 
+  validates :url, presence: true
+  validates :name, presence: true
+
   class << self
     def update_whitelist(user, selected_repos)
       Repo.where(user_id: user.id).update_all(whitelist: false)

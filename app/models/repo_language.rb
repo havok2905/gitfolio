@@ -15,4 +15,7 @@
 #
 class RepoLanguage < ActiveRecord::Base
   has_one :repo
+
+  validates :name, presence: true
+  validates :bytes, presence: true
 end

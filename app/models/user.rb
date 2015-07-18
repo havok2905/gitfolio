@@ -39,6 +39,9 @@ class User < ActiveRecord::Base
   belongs_to :profile
   has_many :repos
 
+  validates :email, presence: true
+  validates :role, presence: true
+
   # Define getters on a class level for role values
   roles.each do |key, value|
     define_singleton_method(key) { value }

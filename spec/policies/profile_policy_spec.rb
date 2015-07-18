@@ -24,7 +24,7 @@ RSpec.describe ProfilePolicy do
   let(:developer_with_profile) do
     User.create(
       role: User.developer,
-      profile: Profile.create,
+      profile: create(:profile),
       email: 'baz@baz.baz',
       password: 'password',
       password_confirmation: 'password'
