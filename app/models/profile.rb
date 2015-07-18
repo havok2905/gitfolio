@@ -28,6 +28,10 @@ class Profile < ActiveRecord::Base
     user.repos.all
   end
 
+  def content?
+    first_name.present? && last_name.present? && tagline.present? && position.present? && email.present?
+  end
+
   def view_model
     languages = RepositoryLanguageList.languages_from user_repos
     list = RepositoryLanguageList.new(languages: languages)

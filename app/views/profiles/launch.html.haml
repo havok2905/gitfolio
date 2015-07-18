@@ -1,22 +1,21 @@
 %section.-container
   %h1 Welcome!
 
-  - if current_user.developer?
+  - if can_sync?
     %h2 Sync Your Repositories To Start Setting Up Your Portfolio Page!
-    %a{href: user_sync_repos_path(current_user), class: 'button -constructive'}
-      Sync Repositories
-    - if current_user.profile.nil?
-      - if current_user.profile.no_content?
-        %h2 Build Your Portfolio Site!
-        %a{href: new_profile_path, class: 'button -constructive'}
-          Build Your Profile
-    -else
-      %h2 Edit Your Portfolio Site
-      %a{href: edit_profile_path(current_user.profile), class: 'button -constructive'}
-        Edit Your Profile
-      - if current_user.profile.published
-        %h2 Deactivate Your Portfolio Site
-        = link_to 'Deactivate Your Profile', profile_deactivate_path(current_user.profile), class: 'button -destructive', method: 'patch'
-      - else
-        %h2 Publish Your Portfolio Site
-        = link_to 'Publish Your Profile', profile_publish_path(current_user.profile), class: 'button -constructive', method: 'patch'
+    = link_to 'Sync Repositories', user_sync_repos_path(current_user), class: 'button -constructive', method: 'patch'
+
+  - if can_build?
+    %h2 Build Your Portfolio Site!
+    = link_to 'Build Your Profile', new_profile_path, class: 'button -constructive'
+
+  - if can_edit?
+    %h2 Edit Your Portfolio Site
+    %a{href: edit_profile_path(current_user.profile), class: 'button -constructive'}
+      Edit Your Profile
+    - if current_user.profile.published
+      %h2 Deactivate Your Portfolio Site
+      = link_to 'Deactivate Your Profile', profile_deactivate_path(current_user.profile), class: 'button -destructive', method: 'patch'
+    - else
+      %h2 Publish Your Portfolio Site
+      = link_to 'Publish Your Profile', profile_publish_path(current_user.profile), class: 'button -constructive', method: 'patch'
