@@ -32,8 +32,8 @@ RSpec.describe ProfilePolicy do
   end
 
   permissions :launch? do
-    it 'allows access to developers' do
-      expect(subject).to_not permit(admin, :profile)
+    it 'allows access to developers and admins' do
+      expect(subject).to permit(admin, :profile)
       expect(subject).to permit(developer, :profile)
     end
   end

@@ -33,7 +33,7 @@ class ProfilePolicy < ApplicationPolicy
   end
 
   def launch?
-    developer?
+    developer? || admin?
   end
 
   private
