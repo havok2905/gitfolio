@@ -33,6 +33,10 @@ class ProfilesController < ApplicationController
     profile.update_attributes(published: false) && redirect_to(profile_launch_path)
   end
 
+  def show
+    render 'profiles/show', locals: { view_model: profile.view_model }
+  end
+
   private
 
   def profile_params

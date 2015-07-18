@@ -1,28 +1,28 @@
 %section.-container
   .profile
-    %h1= profile.view_model[:name]
-    %h2= profile.view_model[:tagline]
+    %h1= view_model[:name]
+    %h2= view_model[:tagline]
     %a{href: "https://github.com/#{profile.view_model[:nickname]}", class: 'button -constructive' }
       = render 'svg/github'
-      = profile.view_model[:nickname]
+      = view_model[:nickname]
     %dl
       %dt Github:
-      %dd= profile.view_model[:nickname]
+      %dd= view_model[:nickname]
       %dt Current Position:
-      %dd= profile.view_model[:position]
+      %dd= view_model[:position]
       %dt Email:
-      %dd= profile.view_model[:email]
+      %dd= view_model[:email]
     %section.languages
       %h3 Languages
       %ul
-        - profile.view_model[:languages].each do |lang|
+        - view_model[:languages].each do |lang|
           %li
             = render "svg/#{lang[:name]}".downcase
             %h4= lang[:name]
       .clearfix
     %section
       %h3 Projects
-      - profile.view_model[:whitelist].each do |repo|
+      - view_model[:whitelist].each do |repo|
         .project
           %h4= repo.name
           %p= repo.description
