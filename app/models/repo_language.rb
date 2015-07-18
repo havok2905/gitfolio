@@ -13,7 +13,6 @@
 #
 #  index_repo_languages_on_repo_id  (repo_id)
 #
-
 class RepoLanguage < ActiveRecord::Base
   has_one :repo
 end
