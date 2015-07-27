@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150715234012) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -32,7 +35,7 @@ ActiveRecord::Schema.define(version: 20150715234012) do
     t.datetime "updated_at"
   end
 
-  add_index "repo_languages", ["repo_id"], name: "index_repo_languages_on_repo_id"
+  add_index "repo_languages", ["repo_id"], name: "index_repo_languages_on_repo_id", using: :btree
 
   create_table "repos", force: :cascade do |t|
     t.string   "url"
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150715234012) do
     t.boolean  "whitelist"
   end
 
-  add_index "repos", ["user_id"], name: "index_repos_on_user_id"
+  add_index "repos", ["user_id"], name: "index_repos_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -66,8 +69,8 @@ ActiveRecord::Schema.define(version: 20150715234012) do
     t.string   "nickname"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["profile_id"], name: "index_users_on_profile_id"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["profile_id"], name: "index_users_on_profile_id", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
