@@ -9,11 +9,11 @@ class GithubApi
   end
 
   def repos(args)
-    HTTParty.get "#{@root}/users/#{args[:username]}/repos", params
+    HTTParty.get "#{@root}/users/#{args[:username]}/repos?per_page=100", params
   end
 
   def repo_data(args)
-    repos = HTTParty.get "#{@root}/users/#{args[:username]}/repos", params
+    repos = HTTParty.get "#{@root}/users/#{args[:username]}/repos?per_page=100", params
     repos.map do |repo|
       {
         name: repo['name'],
