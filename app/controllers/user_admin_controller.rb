@@ -15,7 +15,7 @@ class UserAdminController < ApplicationController
   end
 
   def sync_repos
-    user.sync_repos
+    RepoSync.new(user, GithubApi.new).run
     redirect_to authenticated_root_path
   end
 
