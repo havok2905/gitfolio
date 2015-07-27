@@ -54,6 +54,9 @@ group :development, :test do
   # Unit Testing
   gem 'rspec-rails', '~> 3.2.3'
 
+  # Integration Testing
+  gem 'cucumber-rails', :require => false
+
   # Clear database between tests
   gem 'database_cleaner', '~> 1.4.1'
 

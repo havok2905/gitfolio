@@ -9,7 +9,7 @@ development:
   user:     <%= ENV['DEVELOPMENT_POSTGRES_USERNAME'] %>
   password: <%= ENV['DEVELOPMENT_POSTGRES_PASSWORD'] %>
 
-test:
+test: &test
   <<: *default
   database: <%= ENV['TEST_POSTGRES_DATABASE'] %>
   user:     <%= ENV['TEST_POSTGRES_USERNAME'] %>
@@ -20,3 +20,6 @@ production:
   database: <%= ENV['PROD_POSTGRES_DATABASE'] %>
   user:     <%= ENV['PROD_POSTGRES_USERNAME'] %>
   password: <%= ENV['PROD_POSTGRES_PASSWORD'] %>
+
+cucumber:
+  <<: *test
