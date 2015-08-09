@@ -1,5 +1,5 @@
  every_mid_night:
-   every: 5s
+   cron: 0 0 * * * * 
    class: UserSyncJob
    args:
    queue: high
