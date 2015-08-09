@@ -48,6 +48,9 @@ group :development, :test do
   # Linting and static analysis
   gem 'clint_eastwood'
 
+  # test coverage reports
+  gem 'simplecov', :require => false
+
   # Model and factory comments
   gem 'annotate', '~> 2.6.6'
 

@@ -6,6 +6,7 @@ require 'rspec/rails'
 require 'factory_girl_rails'
 require 'pundit/rspec'
 require 'database_cleaner'
+require 'simplecov'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 Dir[Rails.root.join('lib/**/*.rb')].each { |f| require f }

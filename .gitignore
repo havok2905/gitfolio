@@ -21,3 +21,6 @@
 
 # reddis db dump
 dump.rdb
+
+# test coverage reporting
+coverage
