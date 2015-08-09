@@ -1,0 +1,6 @@
+ every_mid_night:
+   every: 5s
+   class: UserSyncJob
+   args:
+   queue: high
+   description: Sync user information
