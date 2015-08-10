@@ -10,13 +10,16 @@ tool. It will support a few basic features.
 
 ## Stack
 - Currently OSX for development. Eventually switching to an Ubuntu VM
-- Currently a SQLite DB. Will eventually switch to Postgres
-- Redis database for background processing
+- Postgres Application Database
+- Redis database and Resque for background processing
 - Ruby on Rails for business logic
-- Eventully React for JavaScript web components
-- Rspec for unit and integration testing
+- Rspec for unit testing
+- Capybara and Cucumber for integration testing
+- Simplecov for test coverage reports
+- Annotate for schema comments on models
 - Devise for user authentication
 - Pundit for role management
+- SASS for CSS preprocessing
 
 ## Secrets
 Collaborating developers should seek out the secrets file
