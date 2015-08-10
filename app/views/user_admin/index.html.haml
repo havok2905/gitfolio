@@ -18,7 +18,7 @@
         %td= user.provider || "_"
         %td= user.role || "_"
         - if user.profile
-          %td= link_to 'profile', profile_path(user)
+          %td= link_to 'profile', profile_path(user.profile)
         - else
           %td _
         %td= link_to 'edit', edit_user_path(user)
