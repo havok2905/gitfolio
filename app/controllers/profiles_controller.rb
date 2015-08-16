@@ -1,6 +1,5 @@
 # Controller for User tailored profile pages for the public
 class ProfilesController < ApplicationController
-
   helper_method :profile, :profiles, :user_repos
 
   before_action :authenticate_user!, except: [:show]
@@ -26,11 +25,11 @@ class ProfilesController < ApplicationController
   end
 
   def publish
-    profile.update_attributes(published: true) && redirect_to(profile_launch_path)
+    profile.update_attributes(published: true) && redirect_to(edit_profile_path(profile))
   end
 
   def deactivate
-    profile.update_attributes(published: false) && redirect_to(profile_launch_path)
+    profile.update_attributes(published: false) && redirect_to(edit_profile_path(profile))
   end
 
   def show

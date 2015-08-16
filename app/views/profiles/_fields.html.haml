@@ -1,3 +1,16 @@
+- if current_user.profile
+  %h3 Publish / Deactivate
+  - if current_user.profile.published
+    %h2 Deactivate Your Portfolio Site
+    = link_to 'Deactivate Your Profile', profile_deactivate_path(current_user.profile), class: 'button -destructive', method: 'patch'
+  - else
+    %h2 Publish Your Portfolio Site
+    = link_to 'Publish Your Profile', profile_publish_path(current_user.profile), class: 'button -constructive', method: 'patch'
+
+  - if can_sync?
+    %h2 Sync Your Repositories
+    = link_to 'Sync Repositories', user_sync_repos_path(current_user), class: 'button -constructive', method: 'patch'
+
 %h3 Profile Info
 = f.label :fist_name
 = f.text_field :first_name

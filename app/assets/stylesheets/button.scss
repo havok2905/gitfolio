@@ -24,19 +24,16 @@
 
   &.-default {
     background-color: $blue_dark;
-
     &:hover { background-color: $blue_dark_hover; }
   }
 
   &.-constructive {
     background-color: $green;
-
     &:hover { background-color: $green_hover; }
   }
 
   &.-destructive {
     background-color: $red;
-
     &:hover { background-color: $red_hover; }
   }
 }

@@ -18,8 +18,6 @@ class RepoSync
     @api.repo_data(username: @user.nickname).map do |r|
       repo = Repo.where(user_id: @user.id, name: r[:name]).first_or_create
 
-      puts repo
-
       repo.update_attributes(
         url: r[:url],
         description: r[:description],
