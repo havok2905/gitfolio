@@ -1,9 +1,13 @@
 When /^an admin user exists$/ do
-  FactoryGirl.create :admin
+  @user = FactoryGirl.create :admin
 end
 
 When /^a developer user exists$/ do
-  FactoryGirl.create :developer
+  @user = FactoryGirl.create :developer
+end
+
+When /^a developer user exists with no profile$/ do
+  @user = FactoryGirl.create :developer_no_profile
 end
 
 When /^I fill in the login form as an admin user$/ do
@@ -26,6 +30,10 @@ end
 When /^I am logged in as a developer user$/ do
   step 'I visit the homepage'
   step 'I fill in the login form as a developer user'
+end
+
+When(/^I logout$/) do
+  click_link 'Logout'
 end
 
 Then /^I should see the login form$/ do

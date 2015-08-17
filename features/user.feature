@@ -1,5 +1,6 @@
 Feature: User Administration and Management
 
+@user_admin
 Scenario: Admin can edit, view a user, and view a user's profile
   Given an admin user exists
   And a developer user exists

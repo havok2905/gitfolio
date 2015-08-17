@@ -25,9 +25,11 @@ class Repo < ActiveRecord::Base
 
   class << self
     def update_whitelist(user, selected_repos)
-      Repo.where(user_id: user.id).update_all(whitelist: false)
-      Repo.find(selected_repos).each do |r|
-        r.update_attributes(whitelist: true)
+      if selected_repos
+        Repo.where(user_id: user.id).update_all(whitelist: false)
+        Repo.find(selected_repos).each do |r|
+          r.update_attributes(whitelist: true)
+        end
       end
     end
   end

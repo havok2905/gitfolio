@@ -15,8 +15,9 @@
       %ul
         - view_model[:languages].each do |lang|
           %li
-            = render "svg/#{lang[:name]}".downcase
-            %h4= lang[:name]
+            - unless lang.nil?
+              = render "svg/#{lang[:name]}".downcase
+              %h4= lang[:name]
       .clearfix
     %section
       %h3 Projects
