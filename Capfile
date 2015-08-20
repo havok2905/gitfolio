@@ -9,6 +9,9 @@ require 'capistrano/deploy'
 # Require Rails tasks
 require 'capistrano/rails'
 
+# Require rbenv tasks
+require 'capistrano/rbenv'
+
 # Include tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:

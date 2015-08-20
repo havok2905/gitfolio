@@ -48,7 +48,11 @@ group :development, :test do
   # Deployment
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rbenv', '~> 2.0'
 
+  # JS runtime
+  gem "therubyracer"
+    
   # Linting and static analysis
   gem 'clint_eastwood'
 
