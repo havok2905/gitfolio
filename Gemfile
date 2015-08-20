@@ -45,6 +45,10 @@ gem 'resque-scheduler'
 gem 'httparty', '~> 0.13.5'
 
 group :development, :test do
+  # Deployment
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-rails', '~> 1.1'
+
   # Linting and static analysis
   gem 'clint_eastwood'
 
