@@ -20,6 +20,7 @@ production:
   database: <%= ENV['PROD_POSTGRES_DATABASE'] %>
   user:     <%= ENV['PROD_POSTGRES_USERNAME'] %>
   password: <%= ENV['PROD_POSTGRES_PASSWORD'] %>
+  host:     <%= ENV['PROD_SERVER_ADDRESS'] %>
 
 cucumber:
   <<: *test

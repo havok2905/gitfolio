@@ -4,6 +4,8 @@ lock '3.4.0'
 set :application, 'gitfolio'
 set :repo_url, 'git@github.com:havok2905/gitfolio.git'
 
+set :linked_files, fetch(:linked_files, []).push('.env')
+
 set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.2.1'
 
